@@ -1,0 +1,27 @@
+name: SSH to Linux Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ssh:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Set up sshpass to provide the password in SSH
+      - name: Install sshpass
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+
+      # SSH into the server using password authentication
+      - name: SSH into the server using password
+        run: |
+          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no username@your-server-ip "echo 'Successfully logged in!'"
+
