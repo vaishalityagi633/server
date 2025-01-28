@@ -23,5 +23,5 @@ jobs:
       # SSH into the server using password authentication
       - name: SSH into the server using password
         run: |
-          sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no adm_bhaurwa@10.18.11.168 "echo 'Successfully logged in!'"
+          sshpass -p 22 "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no adm_bhaurwa@10.18.11.168 "echo 'Successfully logged in!'"
 
